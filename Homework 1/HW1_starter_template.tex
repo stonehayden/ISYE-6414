@@ -1,0 +1,547 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\title{HW1 Peer Assessment}
+\author{}
+\date{\vspace{-2.5em}}
+
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={HW1 Peer Assessment},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\begin{document}
+\maketitle
+
+\hypertarget{part-a.-anova}{%
+\section{Part A. ANOVA}\label{part-a.-anova}}
+
+Additional Material: ANOVA tutorial
+
+\url{https://datascienceplus.com/one-way-anova-in-r/}
+
+Jet lag is a common problem for people traveling across multiple time
+zones, but people can gradually adjust to the new time zone since the
+exposure of the shifted light schedule to their eyes can resets the
+internal circadian rhythm in a process called ``phase shift''. Campbell
+and Murphy (1998) in a highly controversial study reported that the
+human circadian clock can also be reset by only exposing the back of the
+knee to light, with some hailing this as a major discovery and others
+challenging aspects of the experimental design. The table below is taken
+from a later experiment by Wright and Czeisler (2002) that re-examined
+the phenomenon. The new experiment measured circadian rhythm through the
+daily cycle of melatonin production in 22 subjects randomly assigned to
+one of three light treatments. Subjects were woken from sleep and for
+three hours were exposed to bright lights applied to the eyes only, to
+the knees only or to neither (control group). The effects of treatment
+to the circadian rhythm were measured two days later by the magnitude of
+phase shift (measured in hours) in each subject's daily cycle of
+melatonin production. A negative measurement indicates a delay in
+melatonin production, a predicted effect of light treatment, while a
+positive number indicates an advance.
+
+Raw data of phase shift, in hours, for the circadian rhythm experiment
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+Treatment & Phase Shift (hr) \\
+\midrule
+\endhead
+Control & 0.53, 0.36, 0.20, -0.37, -0.60, -0.64, -0.68, -1.27 \\
+Knees & 0.73, 0.31, 0.03, -0.29, -0.56, -0.96, -1.61 \\
+Eyes & -0.78, -0.86, -1.35, -1.48, -1.52, -2.04, -2.83 \\
+\bottomrule
+\end{longtable}
+
+\hypertarget{question-a1---3-pts}{%
+\subsection{Question A1 - 3 pts}\label{question-a1---3-pts}}
+
+Consider the following incomplete R output:
+
+\begin{longtable}[]{@{}cccccc@{}}
+\toprule
+Source & Df & Sum of Squares & Mean Squares & F-statistics & p-value \\
+\midrule
+\endhead
+Treatments & ? & ? & 3.6122 & ? & 0.004 \\
+Error & ? & 9.415 & ? & & \\
+TOTAL & ? & ? & & & \\
+\bottomrule
+\end{longtable}
+
+Fill in the missing values in the analysis of the variance table.Note:
+Missing values can be calculated using the corresponding formulas
+provided in the lectures, or you can build the data frame in R and
+generate the ANOVA table using the aov() function. Either approach will
+be accepted.
+
+\hypertarget{question-a2---3-pts}{%
+\subsection{Question A2 - 3 pts}\label{question-a2---3-pts}}
+
+Use \(\mu_1\), \(\mu_2\), and \(\mu_3\) as notation for the three mean
+parameters and define these parameters clearly based on the context of
+the topic above (i.e.~explain what \(\mu_1\), \(\mu_2\), and \(\mu_3\)
+mean in words in the context of this problem). Find the estimates of
+these parameters.
+
+\hypertarget{question-a3---5-pts}{%
+\subsection{Question A3 - 5 pts}\label{question-a3---5-pts}}
+
+Use the ANOVA table in Question A1 to answer the following questions:
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\item
+  \textbf{1 pts} Write the null hypothesis of the ANOVA \(F\)-test,
+  \(H_0\)
+\item
+  \textbf{1 pts} Write the alternative hypothesis of the ANOVA
+  \(F\)-test, \(H_A\)
+\item
+  \textbf{1 pts} Fill in the blanks for the degrees of freedom of the
+  ANOVA \(F\)-test statistic: \(F\)(\_\_\_\_, \_\_\_\_\_)
+\item
+  \textbf{1 pts} What is the p-value of the ANOVA \(F\)-test?
+\item
+  \textbf{1 pts} According the the results of the ANOVA \(F\)-test, does
+  light treatment affect phase shift? Use an \(\alpha\)-level of 0.05.
+\end{enumerate}
+
+\hypertarget{part-b.-simple-linear-regression}{%
+\section{Part B. Simple Linear
+Regression}\label{part-b.-simple-linear-regression}}
+
+We are going to use regression analysis to estimate the performance of
+CPUs based on the maximum number of channels in the CPU. This data set
+comes from the UCI Machine Learning Repository.
+
+The data file includes the following columns:
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{vendor}: vendor of the CPU
+\item
+  \emph{chmax}: maximum channels in the CPU
+\item
+  \emph{performance}: published relative performance of the CPU
+\end{itemize}
+
+The data is in the file ``machine.csv''. To read the data in \texttt{R},
+save the file in your working directory (make sure you have changed the
+directory if different from the R working directory) and read the data
+using the \texttt{R} function \texttt{read.csv()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Read in the data}
+\NormalTok{data }\OtherTok{=} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"machine.csv"}\NormalTok{, }\AttributeTok{head =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{sep =} \StringTok{","}\NormalTok{)}
+\CommentTok{\# Show the first few rows of data}
+\FunctionTok{head}\NormalTok{(data, }\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    vendor chmax performance
+## 1 adviser   128         198
+## 2  amdahl    32         269
+## 3  amdahl    32         220
+\end{verbatim}
+
+\hypertarget{question-b1-exploratory-data-analysis---9-pts}{%
+\subsection{Question B1: Exploratory Data Analysis - 9
+pts}\label{question-b1-exploratory-data-analysis---9-pts}}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  \textbf{3 pts} Use a scatter plot to describe the relationship between
+  CPU performance and the maximum number of channels. Describe the
+  general trend (direction and form). Include plots and R-code used.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Your code here...}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \textbf{3 pts} What is the value of the correlation coefficient
+  between \emph{performance} and \emph{chmax}? Please interpret the
+  strength of the correlation based on the correlation coefficient.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Your code here...}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{2}
+\item
+  \textbf{2 pts} Based on this exploratory analysis, would you recommend
+  a simple linear regression model for the relationship?
+\item
+  \textbf{1 pts} Based on the analysis above, would you pursue a
+  transformation of the data? \emph{Do not transform the data.}
+\end{enumerate}
+
+\hypertarget{question-b2-fitting-the-simple-linear-regression-model---11-pts}{%
+\subsection{Question B2: Fitting the Simple Linear Regression Model - 11
+pts}\label{question-b2-fitting-the-simple-linear-regression-model---11-pts}}
+
+Fit a linear regression model, named \emph{model1}, to evaluate the
+relationship between performance and the maximum number of channels.
+\emph{Do not transform the data.} The function you should use in R is:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Your code here...}
+\NormalTok{model1 }\OtherTok{=} \FunctionTok{lm}\NormalTok{(performance }\SpecialCharTok{\textasciitilde{}}\NormalTok{ chmax, data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\item
+  \textbf{3 pts} What are the model parameters and what are their
+  estimates?
+\item
+  \textbf{2 pts} Write down the estimated simple linear regression
+  equation.
+\item
+  \textbf{2 pts} Interpret the estimated value of the \(\beta_1\)
+  parameter in the context of the problem.
+\item
+  \textbf{2 pts} Find a 95\% confidence interval for the \(\beta_1\)
+  parameter. Is \(\beta_1\) statistically significant at this level?
+\item
+  \textbf{2 pts} Is \(\beta_1\) statistically significantly positive at
+  an \(\alpha\)-level of 0.01? What is the approximate p-value of this
+  test?
+\end{enumerate}
+
+\hypertarget{question-b3-checking-the-assumptions-of-the-model---8-pts}{%
+\subsection{Question B3: Checking the Assumptions of the Model - 8
+pts}\label{question-b3-checking-the-assumptions-of-the-model---8-pts}}
+
+Create and interpret the following graphs with respect to the
+assumptions of the linear regression model. In other words, comment on
+whether there are any apparent departures from the assumptions of the
+linear regression model. Make sure that you state the model assumptions
+and assess each one. Each graph may be used to assess one or more model
+assumptions.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  \textbf{2 pts} Scatterplot of the data with \emph{chmax} on the x-axis
+  and \emph{performance} on the y-axis
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Your code here...}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Model Assumption(s) it checks:}
+
+\textbf{Interpretation:}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \textbf{3 pts} Residual plot - a plot of the residuals,
+  \(\hat\epsilon_i\), versus the fitted values, \(\hat{y}_i\)
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Your code here...}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Model Assumption(s) it checks:}
+
+\textbf{Interpretation:}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  \textbf{3 pts} Histogram and q-q plot of the residuals
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Your code here...}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Model Assumption(s) it checks:}
+
+\textbf{Interpretation:}
+
+\hypertarget{question-b4-improving-the-fit---10-pts}{%
+\subsection{Question B4: Improving the Fit - 10
+pts}\label{question-b4-improving-the-fit---10-pts}}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  \textbf{2 pts} Use a Box-Cox transformation (\texttt{boxCox()}) in
+  \texttt{car()} package or (\texttt{boxcox()}) in \texttt{MASS()}
+  package to find the optimal \(\lambda\) value rounded to the nearest
+  half integer. What transformation of the response, if any, does it
+  suggest to perform?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Your code here...}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \textbf{2 pts} Create a linear regression model, named \emph{model2},
+  that uses the log transformed \emph{performance} as the response, and
+  the log transformed \emph{chmax} as the predictor. Note: The variable
+  \emph{chmax} has a couple of zero values which will cause problems
+  when taking the natural log. Please add one to the predictor before
+  taking the natural log of it
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Your code here...}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{2}
+\item
+  \textbf{2 pts} Compare the R-squared values of \emph{model1} and
+  \emph{model2}. Did the transformation improve the explanatory power of
+  the model?
+\item
+  \textbf{4 pts} Similar to Question B3, assess and interpret all model
+  assumptions of \emph{model2}. A model is considered a good fit if all
+  assumptions hold. Based on your interpretation of the model
+  assumptions, is \emph{model2} a good fit?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Your code here...}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{question-b5-prediction---3-pts}{%
+\subsection{Question B5: Prediction - 3
+pts}\label{question-b5-prediction---3-pts}}
+
+Suppose we are interested in predicting CPU performance when
+\texttt{chmax\ =\ 128}. Please make a prediction using both
+\emph{model1} and \emph{model2} and provide the 95\% prediction interval
+of each prediction on the original scale of the response,
+\emph{performance}. What observations can you make about the result in
+the context of the problem?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Your code here...}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{part-c.-anova---8-pts}{%
+\section{Part C. ANOVA - 8 pts}\label{part-c.-anova---8-pts}}
+
+We are going to continue using the CPU data set to analyse various
+vendors in the data set. There are over 20 vendors in the data set. To
+simplify the task, we are going to limit our analysis to three vendors,
+specifically, honeywell, hp, and nas. The code to filter for those
+vendors is provided below.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Filter for honeywell, hp, and nas}
+\NormalTok{data2 }\OtherTok{=}\NormalTok{ data[data}\SpecialCharTok{$}\NormalTok{vendor }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"honeywell"}\NormalTok{, }\StringTok{"hp"}\NormalTok{, }\StringTok{"nas"}\NormalTok{), ]}
+\NormalTok{data2}\SpecialCharTok{$}\NormalTok{vendor }\OtherTok{=} \FunctionTok{factor}\NormalTok{(data2}\SpecialCharTok{$}\NormalTok{vendor)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{2 pts} Using \texttt{data2}, create a boxplot of
+  \emph{performance} and \emph{vendor}, with \emph{performance} on the
+  vertical axis. Interpret the plots.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Your code here...}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \textbf{3 pts} Perform an ANOVA F-test on the means of the three
+  vendors. Using an \(\alpha\)-level of 0.05, can we reject the null
+  hypothesis that the means of the three vendors are equal? Please
+  interpret.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Your code here...}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  \textbf{3 pts} Perform a Tukey pairwise comparison between the three
+  vendors. Using an \(\alpha\)-level of 0.05, which means are
+  statistically significantly different from each other?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Your code here...}
+\end{Highlighting}
+\end{Shaded}
+
+
+\end{document}
